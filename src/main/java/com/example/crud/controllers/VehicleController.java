@@ -1,7 +1,8 @@
 package com.example.crud.controllers;
-import com.example.crud.model.User;
-import com.example.crud.services.UserService;
 
+
+import com.example.crud.model.Vehicle;
+import com.example.crud.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,18 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/vehicles")
+public class VehicleController {
     @Autowired
-    private UserService userService;
+    private VehicleService vehicleService;
 
     @GetMapping("/")
-    public ResponseEntity<List<User>> getUsers() {
-        return ResponseEntity.ok(userService.getUsers());
+    public ResponseEntity<List<Vehicle>> getVehicles() {
+        return  ResponseEntity.ok(vehicleService.getVehicles());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        return ResponseEntity.ok(userService.getUserById(id));
-    }
 }
