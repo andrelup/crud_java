@@ -38,4 +38,9 @@ public class UserController {
             return ResponseEntity.badRequest().build();
         }
     }
+    @GetMapping("/active/with/inactive/vehicles")
+    public ResponseEntity<List<User>> getActiveUsersWithInactiveVehicles() {
+        List<User> result = userService.getActiveUsersWithInactiveVehicles();
+        return ResponseEntity.ok(result);
+    }
 }

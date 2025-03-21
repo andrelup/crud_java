@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -24,4 +25,16 @@ public class UserService {
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
+    public List<User> getActiveUsersWithInactiveVehicles() {
+        List<User> activeUsers = userRepository.findActiveUsersWithInactiveVehicles();
+        for (User user : activeUsers) {
+            user.setVehicles(
+                    user.getVehicles().stream()
+                            .filter(vehicle -> !vehicle.isActive())
+                            .collect(Collectors.toSet())
+            );
+        }
+        return activeUsers;
+    }
+
 }
