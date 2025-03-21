@@ -1,5 +1,6 @@
 package com.example.crud.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Set;
 import java.util.HashSet;
@@ -20,6 +21,7 @@ public class User {
     private boolean active;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Vehicle> vehicles = new HashSet<Vehicle>();
 
     public Long getId() {

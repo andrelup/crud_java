@@ -1,7 +1,7 @@
 package com.example.crud.model;
 
 import jakarta.persistence.*;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Objects;
 import java.util.Set;
 import java.util.HashSet;
@@ -16,6 +16,7 @@ public class Type {
     private String description;
 
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Bike> bikeSet = new HashSet<Bike>();
 
     public Long getId() {

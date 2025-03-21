@@ -1,6 +1,7 @@
 package com.example.crud.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +17,7 @@ public abstract class Vehicle {
     private boolean active;
 
     @ManyToOne
+    @JsonBackReference
     private User user;
 
     public Long getId() {
