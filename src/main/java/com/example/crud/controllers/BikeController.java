@@ -1,29 +1,30 @@
 package com.example.crud.controllers;
 
-import com.example.crud.model.Vehicle;
-import com.example.crud.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
+import com.example.crud.model.Bike;
+import com.example.crud.services.BikeService;
+
 @RestController
-@RequestMapping("/vehicles")
-public class VehicleController {
+@RequestMapping("/cars")
+public class BikeController {
+
     @Autowired
-    private VehicleService vehicleService;
+    private BikeService bikeService;
 
     @GetMapping("/")
-    public ResponseEntity<List<Vehicle>> getVehicles() {
-        return  ResponseEntity.ok(vehicleService.getVehicles());
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<Vehicle> getVehicleById(@PathVariable Long id) {
-        return ResponseEntity.ok(vehicleService.getVehicleById(id));
+    public ResponseEntity<List<Bike>> getUsers() {
+        return ResponseEntity.ok(bikeService.getBikes());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Bike> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(bikeService.getBikeById(id));
+    }
 }

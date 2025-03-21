@@ -1,5 +1,6 @@
 package com.example.crud.services;
 
+import com.example.crud.model.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +16,8 @@ public class BikeService {
 
     public List<Bike> getBikes() {
         return bikeRepository.findAll();
+    }
+    public Bike getBikeById(Long id) {
+        return bikeRepository.findById(id).get();
     }
 }

@@ -1,12 +1,16 @@
 package com.example.crud.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "bikes")
 public class Bike  extends Vehicle {
     private boolean basket;
+
+    @ManyToOne
+    private Type type;
 
     public boolean isBasket() {
         return basket;
@@ -33,7 +37,8 @@ public class Bike  extends Vehicle {
                 ", color='" + getColor() + '\'' +
                 ", active=" + isActive() + '\'' +
                 ", user=" + getUser() + '\'' +
-                ", basket='" + basket +
+                ", basket='" + basket + '\'' +
+                ", type=" + type +
                 '}';
     }
 
