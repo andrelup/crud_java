@@ -20,4 +20,8 @@ public class CarService {
     public Car getCarById(Long id) {
         return carRepository.findById(id).get();
     }
+
+    public Car findByPlate(String plate) {
+        return carRepository.findByPlate(plate);
+    }
 }

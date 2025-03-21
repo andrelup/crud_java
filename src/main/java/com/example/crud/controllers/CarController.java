@@ -20,13 +20,16 @@ public class CarController {
     private CarService carService;
 
     @GetMapping("/")
-    public ResponseEntity<List<Car>> getUsers() {
+    public ResponseEntity<List<Car>> getCars() {
         return ResponseEntity.ok(carService.getCars());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Car> getUserById(@PathVariable Long id) {
+    @GetMapping("/by/id/{id}")
+    public ResponseEntity<Car> getCarById(@PathVariable Long id) {
         return ResponseEntity.ok(carService.getCarById(id));
     }
-
+    @GetMapping("/by/plate/{plate}")
+    public ResponseEntity<Car> getCarByPlate(@PathVariable String plate) {
+        return ResponseEntity.ok(carService.findByPlate(plate));
+    }
 }
