@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import com.example.crud.model.Car;
-import com.example.crud.model.User;
 import com.example.crud.services.CarService;
 
 @RestController
