@@ -2,6 +2,7 @@ package com.example.crud.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -14,10 +15,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
+
+    @Email(message = "Email must be valid")
     private String email;
+
+    @Pattern(regexp = "^\\+?[0-9]{9,15}$", message = "Phone number must be valid")
     private String phone;
     private int age;
+
+    @NotNull(message = "Active flag cannot be empty")
     private boolean active;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
