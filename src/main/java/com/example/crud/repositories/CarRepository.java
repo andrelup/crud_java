@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car, Long> {
     @Query("SELECT c FROM Car c WHERE c.plate = :plate")
-    List<Car> findByPlate(@Param("plate") String brand);
+    Car findByPlate(@Param("plate") String brand);
 }
